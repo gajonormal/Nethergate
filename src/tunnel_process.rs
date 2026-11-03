@@ -1,4 +1,6 @@
-use anyhow::{bail, Result};
+#[cfg(windows)]
+use anyhow::bail;
+use anyhow::Result;
 use std::process::Child;
 
 /// Closing the job kills SSH even if the desktop process exits unexpectedly.
@@ -20,9 +22,10 @@ impl Drop for Job {
     }
 }
 impl OwnedChild {
-    pub(crate) fn new(mut child: Child) -> Result<Self> {
+    pub(crate) fn new(child: Child) -> Result<Self> {
         #[cfg(windows)]
         {
+            let mut child = child;
             use std::os::windows::io::AsRawHandle;
             use windows_sys::Win32::System::JobObjects::*;
             let job = unsafe { CreateJobObjectW(std::ptr::null(), std::ptr::null()) };
