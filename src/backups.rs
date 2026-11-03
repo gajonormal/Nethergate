@@ -610,14 +610,10 @@ pub fn retain_automatic(store: &Path, server_id: &str, newest: &str, keep: usize
     ensure!((2..=50).contains(&keep), "Retenção automática inválida");
     let intended = std::path::absolute(store)?;
     let store = store_path(store)?;
-    let expected = crate::firewall::ps_path(&intended);
-    let resolved = crate::firewall::ps_path(&store);
+    // Validate every ancestor before comparing canonical paths. Windows may expand
+    // a short (8.3) name while canonicalizing an otherwise ordinary directory.
     ensure!(
-        if cfg!(windows) {
-            expected.eq_ignore_ascii_case(&resolved)
-        } else {
-            expected == resolved
-        },
+        crate::backup_destination::directory(&intended)? == store,
         "A pasta de retenção atravessa um link ou junction; nada foi eliminado"
     );
     let mut copies: Vec<_> = list(&store, server_id)?
@@ -1042,6 +1038,66 @@ mod tests {
         );
         let restored = restore(&store, "test", &server, newest).unwrap();
         assert_eq!(restored.restored_backup, *newest);
+    }
+    #[test]
+    #[cfg(windows)]
+    fn retention_accepts_windows_short_paths() {
+        use std::os::windows::ffi::{OsStrExt, OsStringExt};
+        #[link(name = "kernel32")]
+        extern "system" {
+            fn GetShortPathNameW(long: *const u16, short: *mut u16, size: u32) -> u32;
+        }
+        let (store, server) = fixture();
+        let mut copies = Vec::new();
+        for _ in 0..3 {
+            copies.push(create(&store, "test", &server, "automatic").unwrap());
+        }
+        let long: Vec<_> = store.as_os_str().encode_wide().chain(Some(0)).collect();
+        let mut buffer = vec![0u16; 32768];
+        let len =
+            unsafe { GetShortPathNameW(long.as_ptr(), buffer.as_mut_ptr(), buffer.len() as u32) }
+                as usize;
+        assert!(len > 0 && len < buffer.len());
+        let short = PathBuf::from(std::ffi::OsString::from_wide(&buffer[..len]));
+        assert_eq!(short.canonicalize().unwrap(), store.canonicalize().unwrap());
+        assert_eq!(
+            retain_automatic(&short, "test", &copies.last().unwrap().id, 2).unwrap(),
+            1
+        );
+        assert_eq!(list(&store, "test").unwrap().len(), 2);
+    }
+    #[test]
+    fn retention_rejects_linked_ancestors_without_deleting_backups() {
+        let (store, server) = fixture();
+        let mut copies = Vec::new();
+        for _ in 0..3 {
+            copies.push(create(&store, "test", &server, "automatic").unwrap());
+        }
+        let parent = store.parent().unwrap();
+        let alias = parent.join("linked-parent");
+        #[cfg(unix)]
+        std::os::unix::fs::symlink(parent, &alias).unwrap();
+        #[cfg(windows)]
+        assert!(std::process::Command::new("cmd")
+            .args(["/C", "mklink", "/J"])
+            .arg(&alias)
+            .arg(parent)
+            .output()
+            .unwrap()
+            .status
+            .success());
+        assert!(retain_automatic(
+            &alias.join("backups"),
+            "test",
+            &copies.last().unwrap().id,
+            2
+        )
+        .is_err());
+        assert_eq!(list(&store, "test").unwrap().len(), 3);
+        #[cfg(windows)]
+        fs::remove_dir(&alias).unwrap();
+        #[cfg(unix)]
+        fs::remove_file(&alias).unwrap();
     }
     #[test]
     fn corrupt_survivor_prevents_any_retention_deletion() {
