@@ -1,0 +1,18 @@
+[package]
+name = "nethergate-desktop"
+version = "0.2.0"
+edition = "2021"
+license = "GPL-3.0-only"
+
+[features]
+custom-protocol = ["tauri/custom-protocol"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+serde_json = "1"
+nethergated = { path = ".." }
+tauri-plugin-dialog = "2"
+tauri-plugin-notification = "2"

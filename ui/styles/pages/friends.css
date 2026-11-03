@@ -1,0 +1,335 @@
+.connection-panel {
+  display: grid;
+  gap: 20px;
+  min-width: 0;
+}
+.connection-panel .play-together {
+  display: grid;
+  gap: 20px;
+  padding: 24px;
+}
+.connection-panel
+  .play-together
+  > :is(p, .audience-picker, .disclosure, .internet-step) {
+  margin: 0;
+}
+.connection-panel .audience-picker {
+  gap: 12px;
+}
+.connection-panel .audience-picker label {
+  min-height: 48px;
+  margin: 0;
+  padding: 12px;
+  line-height: 1.4;
+  flex-basis: 200px;
+}
+.connection-panel .audience-picker input[type="radio"] {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #ddd;
+  border-radius: 0;
+  background: #202020;
+}
+.connection-panel .audience-picker input[type="radio"]:checked {
+  background: #eee;
+  box-shadow: inset 0 0 0 2px #42191d;
+}
+.connection-panel :is(.together-sharing, .together-preparation) {
+  display: grid;
+  gap: 20px;
+  min-width: 0;
+}
+.connection-panel .together-sharing > .audience-picker {
+  margin: 0;
+}
+.connection-panel .play-together > .disclosure > .disclosure-content {
+  padding: 20px;
+}
+.connection-panel .together-checklist {
+  margin: 0;
+  gap: 10px;
+}
+.connection-panel .together-access {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+  padding-top: 20px;
+}
+.connection-panel .together-access :is(p, h4, form) {
+  margin: 0;
+}
+.connection-panel .players-add {
+  width: 100%;
+  max-width: none;
+}
+.connection-panel .network-change {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 16px;
+  border-left: 3px solid #b76b70;
+}
+.connection-panel .network-change :is(h3, p, .network-change-actions) {
+  margin: 0;
+}
+.connection-panel .network-change h3 {
+  font-size: 15px;
+  line-height: 1.4;
+}
+.connection-panel .network-change-actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  justify-content: stretch;
+  align-items: stretch;
+  gap: 12px;
+}
+.connection-panel .network-change-actions > .button {
+  width: 100%;
+  height: 100%;
+  justify-self: stretch;
+  justify-content: center;
+  text-align: center;
+  white-space: normal;
+}
+.connection-panel .network-change-actions:has(> :nth-child(4)) > :first-child {
+  grid-column: 1 / -1;
+}
+.connection-panel .friends-navigation {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  padding: 20px;
+  background: var(--surface-background);
+  border: 2px solid var(--surface-border);
+  /* Cover the scroll container's 3px top inset while this bar is sticky. */
+  box-shadow:
+    0 -4px var(--surface-background),
+    var(--surface-bevel);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.connection-panel .friends-navigation > .button {
+  width: 100%;
+  justify-content: center;
+}
+.connection-panel .internet-step {
+  display: grid;
+  gap: 20px;
+  min-width: 0;
+  padding-top: 24px;
+  margin-top: 24px;
+}
+.connection-panel
+  .internet-step
+  > :is(h3, h4, p, label, .button, .connection-address, dl) {
+  margin: 0;
+}
+.connection-panel .internet-step > label:not(.eula-check) {
+  display: grid;
+  gap: 8px;
+  max-width: none;
+  min-width: 0;
+}
+.connection-panel .internet-router-plan {
+  width: 100%;
+  max-width: none;
+  border-radius: 0;
+}
+.connection-panel .firewall-card {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+  padding: 20px;
+  min-width: 0;
+}
+.connection-panel .firewall-card > :is(p, .players-heading, .button) {
+  margin: 0;
+}
+.connection-panel .router-panel {
+  display: grid;
+  gap: 20px;
+  min-width: 0;
+}
+.connection-panel .router-panel > :is(h3, p, .button) {
+  margin: 0;
+}
+.connection-panel .router-panel fieldset {
+  display: grid;
+  gap: 20px;
+}
+.connection-panel .router-panel .form-row {
+  margin: 0;
+  gap: 16px;
+  align-items: end;
+}
+.connection-panel .router-panel label:not(.eula-check) {
+  margin: 0;
+  gap: 8px;
+  min-width: 0;
+}
+.connection-panel .players-heading {
+  gap: 16px;
+  align-items: center;
+}
+.connection-panel .players-heading h3 {
+  margin: 0;
+  line-height: 1.4;
+}
+.connection-panel .connection-settings {
+  display: grid;
+  gap: 20px;
+  padding-top: 16px;
+}
+.connection-panel .connection-settings > :is(h3, p, .form-info) {
+  margin: 0;
+}
+.connection-panel .network-change-help {
+  border-top: 1px solid #444;
+  padding-top: 8px;
+}
+.connection-panel .connection-advanced {
+  border: 2px solid #3c3c3c;
+}
+.connection-panel .connection-advanced > summary {
+  padding: 16px 20px;
+  color: #eee;
+}
+.connection-panel .connection-advanced > .settings-panel {
+  margin: 0;
+  padding: 20px;
+  border: 0;
+  box-shadow: none;
+}
+.connection-panel .network-section {
+  scroll-margin-top: 112px;
+  margin: 16px 0 0;
+  padding-inline: 16px;
+  border-radius: 0;
+}
+.connection-panel .network-section > .connection-card {
+  border: 0;
+  box-shadow: none;
+  padding: 16px 0 0;
+  margin: 0;
+  background: transparent;
+}
+.connection-panel :is(.ddns-panel, .sharing-panel) {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+  padding: 20px;
+  min-width: 0;
+}
+.connection-panel
+  :is(.ddns-panel, .sharing-panel)
+  > :is(h3, p, .modal-actions, .connection-address, details) {
+  margin: 0;
+}
+.connection-panel :is(.dns-test, .dns-settings, .dns-account-help) {
+  border-top: 1px solid #3c3c3c;
+}
+.connection-panel details > summary {
+  cursor: pointer;
+  line-height: 1.5;
+}
+.connection-panel :is(.dns-test, .dns-settings, .dns-account-help) > summary {
+  padding: 14px 0;
+}
+.connection-panel .dns-test .internet-step {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: grid;
+  gap: 16px;
+}
+.connection-panel .ddns-panel fieldset {
+  display: grid;
+  gap: 16px;
+}
+.connection-panel .ddns-panel fieldset > label:not(.eula-check) {
+  max-width: none;
+  margin: 0;
+}
+.connection-panel .ddns-panel .eula-check {
+  margin: 0;
+  line-height: 1.6;
+}
+.connection-panel .ddns-panel fieldset > button {
+  margin: 0;
+}
+.connection-panel .connection-address {
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.connection-panel .connection-address code {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.connection-panel .form-info {
+  line-height: 1.65;
+}
+.connection-panel .form-info > .button {
+  display: flex;
+  margin-top: 12px;
+}
+.connection-panel .modal-actions {
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 0;
+}
+.connection-panel .button {
+  min-height: 44px;
+  justify-self: start;
+}
+.connection-panel
+  :is(.together-preparation, .internet-step, .together-access)
+  > .button {
+  margin: 0;
+}
+.connection-panel .connection-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: end;
+}
+.connection-panel .connection-options > label {
+  flex: 1 1 260px;
+  margin: 0;
+  min-width: 0;
+}
+.connection-panel p {
+  overflow-wrap: anywhere;
+}
+.connection-panel .direct-network-option {
+  border-top: 1px solid #3c3c3c;
+  margin-top: 16px;
+}
+.connection-panel .direct-network-option > summary {
+  padding: 16px 0;
+}
+.connection-panel .direct-network-option > .connection-card {
+  margin: 0;
+  padding: 0 0 16px;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+@media (max-width: 850px) {
+  .connection-panel .friends-navigation {
+    padding: 16px;
+  }
+  .connection-panel .network-change-actions {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .connection-panel .play-together,
+  .connection-panel :is(.ddns-panel, .sharing-panel),
+  .connection-panel .connection-advanced > .settings-panel {
+    padding: 16px;
+  }
+  .connection-panel .audience-picker label {
+    flex-basis: 100%;
+  }
+}

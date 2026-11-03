@@ -1,0 +1,44 @@
+name: Windows release candidate
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: windows-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - run: npm ci
+      - run: cargo fmt --check
+      - run: cargo fmt --manifest-path src-tauri/Cargo.toml --check
+      - run: cargo clippy --locked --all-targets -- -D warnings
+      - run: cargo test --locked
+      - run: npm run build
+      - run: cargo clippy --manifest-path src-tauri/Cargo.toml --features custom-protocol --locked --all-targets -- -D warnings
+      - run: cargo test --manifest-path src-tauri/Cargo.toml --features custom-protocol --locked
+      - run: npm run package:windows
+      - name: Hash installer and record provenance
+        shell: pwsh
+        run: |
+          $installers = @(Get-ChildItem -LiteralPath src-tauri/target/release/bundle/nsis -Filter '*.exe')
+          if ($installers.Count -eq 0) { throw 'No installer produced' }
+          $files = @($installers | ForEach-Object {
+            @{ name = $_.Name; bytes = $_.Length; sha256 = (Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash.ToLowerInvariant() }
+          })
+          @{ revision = '${{ github.sha }}'; run = '${{ github.run_id }}'; signed = $false; files = $files } |
+            ConvertTo-Json -Depth 5 | Set-Content -LiteralPath src-tauri/target/release/bundle/nsis/candidate.json -Encoding utf8
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Nethergate-windows-candidate
+          path: |
+            src-tauri/target/release/bundle/nsis/*.exe
+            src-tauri/target/release/bundle/nsis/candidate.json
+          if-no-files-found: error
+          retention-days: 14

@@ -1,0 +1,223 @@
+/* Shared form rhythm; the textured action/selection colours remain in creative.css. */
+.button:disabled {
+  background: #222222;
+  color: #999;
+  border-color: #444;
+  box-shadow: inset 0 -3px #222;
+  text-shadow: none;
+}
+:is(.workspace-body, .modal)
+  :is(
+    .muted,
+    .players-hint,
+    .form-note,
+    .field-hint,
+    .form-hint,
+    .panel-footnote,
+    .library-path,
+    .firewall-path
+  ) {
+  color: var(--ui-muted);
+}
+.panel-footnote {
+  background: #161616;
+  border-color: #393939;
+}
+.console-toolbar label,
+.console-input,
+.console-input input {
+  color: #bcbcbc;
+}
+.console-input {
+  background: #161616;
+  border-color: #393939;
+}
+.console-input input::placeholder {
+  color: #a0a0a0;
+}
+.server-specs svg,
+.backup-summary svg,
+.player-avatar {
+  color: #bcbcbc;
+}
+:is(.settings-panel, .connection-card, .modal)
+  :is(
+    input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+    select,
+    textarea
+  ) {
+  min-width: 0;
+  background-color: var(--surface-input);
+  color: #eee;
+  border: 2px solid #111;
+  border-radius: 0;
+  box-shadow: inset 0 2px #111;
+  padding: 10px 12px;
+  line-height: 1.35;
+}
+:is(.settings-panel, .connection-card, .modal)
+  :is(
+    input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+    select
+  ) {
+  height: 44px;
+}
+:is(.settings-panel, .connection-card, .modal)
+  :is(
+    input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+    select,
+    textarea
+  ):disabled {
+  color: #999;
+  background-color: #1c1c1c;
+  border-color: #303030;
+  opacity: 1;
+}
+:is(.settings-panel, .connection-card, .modal)
+  :is(
+    input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+    select,
+    textarea
+  ):focus-visible {
+  border-color: #d3d3d3 !important;
+  outline: 2px solid #111;
+  outline-offset: 1px;
+}
+:is(.players-heading, .world-heading, .section-heading) {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+:is(.players-heading, .world-heading) > div:first-child {
+  flex: 1;
+  min-width: 180px;
+}
+:is(.players-heading, .world-heading, .settings-panel, .gameplay-panel) h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  line-height: 1.35;
+}
+:is(
+    .players-heading,
+    .world-heading,
+    .section-heading,
+    .players-access,
+    .player-row,
+    .plugin-row,
+    .connection-address,
+    .modal-actions,
+    .network-change-actions
+  )
+  .button {
+  margin: 0;
+  flex-shrink: 0;
+}
+.players-add,
+.plugin-search {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px 12px;
+  align-items: end;
+  max-width: 760px;
+}
+.players-add > label,
+.plugin-search > label {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  max-width: none;
+  flex: none;
+  margin: 0;
+}
+.players-add > label > input,
+.plugin-search > label > input {
+  width: 100%;
+}
+.players-add > .button,
+.plugin-search > .button {
+  margin: 0;
+  height: 44px;
+  min-height: 44px;
+  padding-block: 8px;
+  align-self: end;
+}
+.players-add > .form-hint {
+  grid-column: 1 / -1;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.form-row {
+  gap: 16px;
+  align-items: start;
+}
+.form-row > label {
+  min-width: 0;
+}
+.form-row > label > :is(input, select) {
+  width: 100%;
+}
+.modal-actions,
+.network-change-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+}
+.modal-actions > span {
+  flex: 1 1 180px;
+  max-width: none;
+}
+.modal-actions .button {
+  min-height: 44px;
+}
+.plugin-row {
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+.plugin-row > div:first-child {
+  flex: 1 1 210px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.player-row > div {
+  min-width: 0;
+}
+.player-row > .button {
+  margin-left: auto;
+}
+.player-row strong {
+  overflow-wrap: anywhere;
+}
+.catalog-description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.settings-panel,
+.world-panel,
+.connection-card {
+  scroll-margin: 12px;
+}
+.toast {
+  left: 50%;
+  max-width: calc(100vw - 32px);
+}
+@media (max-width: 700px) {
+  .players-add,
+  .plugin-search {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .players-add > .button,
+  .plugin-search > .button {
+    justify-self: start;
+  }
+  .modal-actions > .button {
+    flex: 1 1 160px;
+  }
+}

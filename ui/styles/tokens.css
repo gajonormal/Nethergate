@@ -1,0 +1,25 @@
+/* Effective theme values, defined once for the whole application. */
+:root {
+  --font-ui: Minecraft, "Segoe UI", sans-serif;
+  --muted: #b8b8b8;
+  --crimson-accent: #d77a8a;
+  --accent-neutral: #c2c2c2;
+  --border: #1e1e1f;
+  --ore-panel: #181818;
+  --ore-face: #282828;
+  --ore-edge: #1b211a;
+  --ore-light: #d0d2d4;
+  --ore-selected: #8d2837;
+  --ore-bevel: inset 0 2px #5f5f5f, inset 0 -5px #2a2a2a;
+  --creative-frame: #383838;
+  --blackstone: url("../assets/ore/blackstone.png");
+  --crimson: url("../assets/ore/crimson-nylium.png");
+  --netherrack: url("../assets/ore/netherrack.png");
+  --ui-muted: #b8b8b8;
+  --ui-line: #353535;
+  --surface-background: #191919;
+  --surface-raised: #242424;
+  --surface-input: #121212;
+  --surface-border: #353535;
+  --surface-bevel: inset 0 2px #3d3e3f;
+}

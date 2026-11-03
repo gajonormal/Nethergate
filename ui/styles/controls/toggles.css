@@ -1,0 +1,199 @@
+/* Figma Ore switches 382:2141 / 382:2131 / 222:416. */
+.ore-toggle {
+  position: relative;
+  display: inline-flex;
+  flex: 0 0 50px;
+  width: 50px;
+  height: 28px;
+  vertical-align: middle;
+}
+.ore-toggle > input.ore-toggle-input {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.ore-toggle-art {
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 28px;
+  pointer-events: none;
+}
+.ore-toggle-track {
+  position: absolute;
+  inset: 4px 0 0;
+  background: #1e1e1f;
+  padding: 2px;
+}
+.ore-toggle-track > span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #a3a4a6;
+  background: #8c8d90;
+}
+.ore-toggle-thumb {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 26px;
+  height: 28px;
+  background: #1e1e1f;
+  padding: 2px 2px 6px;
+}
+.ore-toggle-thumb > span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #f4f6f9;
+  border: 2px solid #fbfbfd;
+  box-shadow: 0 4px #58585a;
+}
+.ore-toggle-on {
+  display: none;
+  position: absolute;
+  left: 12px;
+  top: 11px;
+  width: 2px;
+  height: 11px;
+  background: #fff;
+}
+.ore-toggle-off {
+  position: absolute;
+  left: 34px;
+  top: 12px;
+  width: 10px;
+  height: 10px;
+  image-rendering: pixelated;
+}
+.ore-toggle-input:checked + .ore-toggle-art .ore-toggle-track > span {
+  background: #b83d51;
+  border-color: #d27785;
+}
+.ore-toggle-input:checked + .ore-toggle-art .ore-toggle-thumb {
+  left: 24px;
+}
+.ore-toggle-input:checked + .ore-toggle-art .ore-toggle-on {
+  display: block;
+}
+.ore-toggle-input:checked + .ore-toggle-art .ore-toggle-off {
+  display: none;
+}
+.ore-toggle-input:focus-visible + .ore-toggle-art {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+.ore-toggle-input:not(:disabled):hover + .ore-toggle-art {
+  filter: brightness(1.08);
+}
+.ore-toggle-input:disabled {
+  cursor: not-allowed;
+}
+.ore-toggle-input:disabled + .ore-toggle-art .ore-toggle-track {
+  background: #8c8d90;
+}
+.ore-toggle-input:disabled + .ore-toggle-art .ore-toggle-track > span {
+  background: #b1b2b5;
+  border-color: #b1b2b5;
+}
+.ore-toggle-input:disabled + .ore-toggle-art .ore-toggle-thumb {
+  background: #58585a;
+}
+.ore-toggle-input:disabled + .ore-toggle-art .ore-toggle-thumb > span {
+  background: #b1b2b5;
+  border-color: #b1b2b5;
+  box-shadow: 0 4px #8c8d90;
+}
+.ore-toggle-input:disabled + .ore-toggle-art .ore-toggle-on {
+  background: #666;
+}
+.eula-check:has(.ore-toggle),
+.checkbox-row:has(.ore-toggle) {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.console-toolbar label:has(.ore-toggle) {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.library-toolbar {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+.library-toolbar .server-search {
+  width: 100%;
+  min-width: 0;
+  padding: 0 14px;
+  gap: 12px;
+  min-height: 48px;
+  background: var(--surface-input);
+  border: 2px solid #0d0d0e;
+  box-shadow:
+    inset 2px 2px #111,
+    inset -2px -2px #5d5d5e;
+}
+.library-toolbar .server-search:focus-within {
+  border-color: #b56873;
+  outline: 2px solid #eee;
+  outline-offset: 2px;
+}
+.library-toolbar .server-search input[type="search"] {
+  width: 100%;
+  min-width: 0;
+  height: 44px;
+  padding: 10px 0;
+  outline: none;
+  color: #eee;
+  font-size: 15px;
+}
+.library-toolbar .server-search input[type="search"]::placeholder {
+  color: #a5a5a5;
+  opacity: 1;
+}
+.server-search .pixel-search {
+  flex-shrink: 0;
+  color: #dedede;
+}
+.server-search .search-clear {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  color: #ccc;
+  padding: 0;
+}
+.server-search .search-clear:hover {
+  color: #fff;
+  background: #484849;
+}
+.server-search input::-webkit-search-cancel-button {
+  appearance: none;
+}
+.library-status .local-dot {
+  width: 8px;
+  height: 8px;
+  min-width: 8px;
+  border-radius: 0;
+  box-shadow: none;
+  background: #d77a8a;
+}
+.library-status .local-dot.disconnected {
+  background: #cf6060;
+}
+@media (max-width: 600px) {
+  .library-toolbar {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 9px;
+  }
+  .library-toolbar .library-status {
+    justify-self: end;
+  }
+}

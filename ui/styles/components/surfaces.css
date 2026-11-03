@@ -1,0 +1,122 @@
+/* Shared Ore frame, matching the backup summary throughout the application. */
+:root
+  :is(
+    .backup-summary,
+    .address-bar,
+    .server-metrics,
+    .connection-card,
+    .backup-row,
+    .plugin-row,
+    .settings-info,
+    .form-info,
+    .connection-facts,
+    .players-access,
+    .internet-router-plan,
+    .restore-facts,
+    .restore-safety,
+    .connection-adapter,
+    .connection-result,
+    .backup-empty,
+    .world-stop-note,
+    .world-working,
+    .disclosure
+  ) {
+  background: var(--surface-background);
+  border: 2px solid var(--surface-border);
+  border-radius: 0;
+  box-shadow: var(--surface-bevel);
+}
+/* Each history entry owns its frame instead of inheriting a rounded wrapper. */
+:root .backup-list {
+  display: grid;
+  gap: 12px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+:root .backup-row:last-child {
+  border-bottom: 2px solid var(--surface-border);
+}
+/* Disclosure already provides the shared frame for its contents. */
+:root .disclosure-content > .connection-card {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+/* Native details must use the same Ore disclosure header as our component. */
+:root :is(.workspace-body, .modal) details:not(.app-options):not(.disclosure) {
+  background: var(--surface-background);
+  border: 2px solid var(--surface-border);
+  border-radius: 0;
+  box-shadow: var(--surface-bevel);
+  padding: 0 16px;
+}
+:root :is(.workspace-body, .modal) details:not(.app-options) > summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 52px;
+  padding: 14px 16px;
+  margin: 0;
+  color: #eee;
+  background: transparent;
+  border: 0;
+  list-style: none;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1.5;
+}
+:root
+  :is(.workspace-body, .modal)
+  details:not(.app-options):not(.disclosure)
+  > summary {
+  margin-inline: -16px;
+}
+:root
+  :is(.workspace-body, .modal)
+  details:not(.app-options)
+  > summary::-webkit-details-marker {
+  display: none;
+}
+:root :is(.workspace-body, .modal) details:not(.app-options) > summary::marker {
+  content: "";
+}
+:root :is(.workspace-body, .modal) details:not(.app-options) > summary::before {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 12px;
+  flex: 0 0 12px;
+  color: #d27785;
+  background:
+    linear-gradient(currentColor, currentColor) center / 12px 2px no-repeat,
+    linear-gradient(currentColor, currentColor) center / 2px 12px no-repeat;
+}
+:root
+  :is(.workspace-body, .modal)
+  details:not(.app-options)[open]
+  > summary::before {
+  background-size:
+    12px 2px,
+    0 0;
+}
+:root :is(.workspace-body, .modal) details:not(.app-options) > summary:hover {
+  background: var(--surface-raised);
+}
+:root :is(.workspace-body, .modal) details:not(.app-options)[open] > summary {
+  border-bottom: 2px solid var(--surface-border);
+  box-shadow: 0 2px #171717;
+}
+:root
+  :is(.workspace-body, .modal)
+  details:not(.app-options):not(.disclosure)[open] {
+  padding-bottom: 16px;
+}
+:root
+  :is(.workspace-body, .modal)
+  details:not(.app-options):not(.disclosure)[open]
+  > summary {
+  margin-bottom: 20px;
+}

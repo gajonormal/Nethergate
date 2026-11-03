@@ -1,0 +1,238 @@
+/* Creative inventory layout. Block fills: Figma mo8dqrmRTPEbCKggaqPz2e,
+   crimson nylium 1:17 and blackstone 2:147. Keep status colours semantic. */
+.brand-dot {
+  color: #e16c7e;
+}
+.app-masthead {
+  position: relative;
+}
+.app-shell > main,
+.library-workspace > main {
+  margin: 24px auto 0;
+  padding: 0;
+}
+.app-shell .main-content,
+.library-workspace .main-content {
+  max-width: none;
+  margin: 0;
+  border: 9px solid var(--creative-frame);
+}
+.creative-tabs {
+  display: flex;
+  position: relative;
+  z-index: 1;
+  scrollbar-width: thin;
+  scrollbar-color: #777 #28272b;
+}
+.creative-tab {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 124px;
+  gap: 7px;
+  padding: 12px 8px;
+  color: #f4f1f4;
+  border: 3px solid #121114;
+  border-bottom: 0;
+  background:
+    linear-gradient(#0003, #0003),
+    var(--blackstone) repeat;
+  background-size:
+    auto,
+    96px 96px;
+  image-rendering: pixelated;
+  text-shadow: 2px 2px #111;
+  font-size: 13px;
+}
+.creative-tab svg {
+  color: #cecece;
+  filter: drop-shadow(2px 2px #111);
+}
+.creative-tab:hover {
+  filter: brightness(1.2);
+}
+.creative-tab.active {
+  color: #fff;
+  text-shadow: 2px 2px #171717;
+}
+.creative-tab.active svg {
+  filter: none;
+}
+.creative-tab:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: -7px;
+}
+.app-shell > .sidebar,
+.library-workspace > .sidebar {
+  position: absolute;
+  inset: 18px 24px auto auto;
+  width: 165px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  overflow: visible;
+  z-index: 8;
+}
+.sidebar-bottom {
+  margin: 0;
+}
+.sidebar .engine,
+.app-masthead .local-pill {
+  display: none;
+}
+.app-shell .app-options {
+  margin: 0;
+}
+.app-shell .app-options > summary {
+  min-height: 54px;
+  border: 2px solid #111;
+  background:
+    linear-gradient(#0004, #0004),
+    var(--blackstone) repeat;
+  background-size:
+    auto,
+    96px 96px;
+  box-shadow:
+    inset 2px 2px #666666,
+    inset -2px -3px #111;
+}
+.app-shell .app-options-content {
+  position: absolute;
+  top: 62px;
+  right: 0;
+  width: 260px;
+  padding: 10px;
+  border: 3px solid var(--creative-frame);
+  background: #252525;
+  box-shadow: 4px 5px #111;
+}
+.app-options-content .nav-item {
+  font-size: 13px;
+  justify-content: start;
+}
+.button,
+.button.secondary,
+.ram-options button,
+.audience-picker label,
+.icon-button {
+  background:
+    linear-gradient(#0004, #0004),
+    var(--blackstone) repeat;
+  background-size:
+    auto,
+    96px 96px;
+  image-rendering: pixelated;
+  color: #fff;
+  border-color: #171717;
+  box-shadow:
+    inset 2px 2px #666666,
+    inset -2px -5px #171717;
+  text-shadow: 2px 2px #111;
+}
+.button.primary,
+.ram-options button.chosen,
+.audience-picker label.selected,
+.audience-picker label:has(input:checked) {
+  background:
+    linear-gradient(#24000838, #24000838),
+    var(--crimson) repeat;
+  background-size:
+    auto,
+    96px 96px;
+  color: #fff;
+  box-shadow:
+    inset 2px 2px #d36b76,
+    inset -2px -5px #460e1e;
+  text-shadow: 2px 2px #390813;
+  border-color: #b26375;
+}
+.audience-picker label {
+  transition: filter 100ms;
+}
+.audience-picker label:hover {
+  filter: brightness(1.15);
+}
+.audience-picker label:focus-within {
+  outline: 2px solid #eeb4bf;
+  outline-offset: 3px;
+}
+.audience-picker input[type="radio"],
+input[type="checkbox"] {
+  accent-color: #b83d51;
+}
+.button:hover:not(:disabled),
+.button.secondary:hover:not(:disabled),
+.button.primary:hover:not(:disabled),
+.icon-button:hover:not(:disabled) {
+  background-color: #6e3743;
+  background-image: linear-gradient(#ffffff12, #ffffff12), var(--blackstone);
+  filter: brightness(1.15);
+}
+.button.primary:hover:not(:disabled) {
+  background-image: linear-gradient(#ffffff12, #ffffff12), var(--crimson);
+}
+.button:active:not(:disabled) {
+  box-shadow: inset 2px 3px #111;
+}
+.button.danger {
+  background: #672333;
+  box-shadow:
+    inset 2px 2px #a2475b,
+    inset -2px -5px #330e19;
+}
+.button.danger:hover:not(:disabled) {
+  background: #7c2b3e;
+}
+@media (max-width: 1000px) {
+  .creative-tab {
+    flex-basis: 108px;
+  }
+  .app-masthead .brand {
+    font-size: 23px;
+  }
+}
+@media (max-width: 850px) {
+  .app-shell > main,
+  .library-workspace > main {
+    margin-top: 14px;
+  }
+  .app-shell .main-content,
+  .library-workspace .main-content {
+    padding: 20px 16px 0;
+    border-width: 7px;
+  }
+  .app-shell > .sidebar,
+  .library-workspace > .sidebar {
+    inset: 12px 16px auto auto;
+    width: 48px;
+  }
+  .app-shell .app-options > summary {
+    min-height: 48px;
+    padding: 10px;
+  }
+  .app-options > summary > span,
+  .app-options > summary::after {
+    display: none;
+  }
+  .app-options-content .nav-item {
+    font-size: 13px;
+  }
+  .creative-tab {
+    flex-basis: 90px;
+    font-size: 11px;
+    min-height: 72px;
+  }
+  .creative-tab.active {
+    min-height: 84px;
+  }
+  .creative-tabs {
+    gap: 5px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .creative-tab,
+  .button {
+    transition: none;
+  }
+}

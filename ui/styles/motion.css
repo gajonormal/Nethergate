@@ -1,0 +1,59 @@
+/* Small interaction feedback, with opacity reserved for dialog entry/exit. */
+@keyframes modal-exit {
+  from {
+    transform: none;
+    opacity: 1;
+  }
+  to {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+}
+:root .modal-backdrop[data-closing] .modal {
+  animation: modal-exit 140ms ease-in forwards;
+  pointer-events: none;
+}
+@keyframes panel-enter {
+  from {
+    transform: translateY(4px);
+  }
+  to {
+    transform: none;
+  }
+}
+:root :is(.button, .icon-button, .modal-close) {
+  transition:
+    transform 80ms ease-out,
+    background-color 100ms ease-out;
+}
+:root :is(.button, .icon-button, .modal-close):not(:disabled):active {
+  transform: translateY(2px);
+}
+.ore-toggle-thumb {
+  transition: left 120ms ease-out;
+}
+.workspace-body > :not([hidden]):not(.modal-backdrop),
+.connection-panel > div:not([hidden]),
+.disclosure[open] > .disclosure-content {
+  animation: panel-enter 140ms ease-out;
+}
+/* Animate layout height only; fixed textures keep their viewport reference. */
+.app-options > .app-options-reveal {
+  height: 0;
+  overflow: clip;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root .modal-backdrop[data-closing] .modal,
+  .workspace-body > :not([hidden]),
+  .connection-panel > div,
+  .disclosure > .disclosure-content {
+    animation: none;
+  }
+  :root :is(.button, .icon-button, .modal-close),
+  .ore-toggle-thumb {
+    transition: none;
+  }
+  :root :is(.button, .icon-button, .modal-close):active {
+    transform: none;
+  }
+}

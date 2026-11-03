@@ -1,0 +1,68 @@
+.library-workspace .main-content {
+  container-type: inline-size;
+  container-name: library;
+}
+.world-art > .world-preview {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+.world-art > .world-label,
+.world-art > .badge {
+  z-index: 1;
+}
+.library-workspace .page-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 24px;
+}
+.library-workspace .page-heading > div {
+  min-width: 0;
+}
+.library-workspace .library-brand {
+  margin: 0;
+  line-height: 1;
+}
+.library-workspace .library-brand .nethergate-lockup {
+  display: block;
+  width: 334px;
+  max-width: 100%;
+  height: auto;
+  flex-shrink: 1;
+}
+.library-workspace .library-heading-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 12px;
+}
+.library-workspace .library-heading-actions > .button {
+  width: 100%;
+  height: 44px;
+  margin: 0;
+  white-space: nowrap;
+}
+@container library (max-width: 760px) {
+  .library-workspace .page-heading {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 200px);
+    gap: 24px;
+  }
+  .library-workspace .library-heading-actions {
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+  }
+}
+@container library (max-width: 400px) {
+  .library-workspace .page-heading {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 180px);
+    gap: 12px;
+  }
+  .library-workspace .library-heading-actions > .button {
+    white-space: normal;
+  }
+}

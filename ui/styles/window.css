@@ -1,0 +1,130 @@
+/* The desktop compositor shows through everything outside the inventory skin. */
+:root,
+html,
+body,
+#root {
+  background: transparent;
+}
+.app-shell {
+  background: transparent;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.app-shell > main,
+.library-workspace > main {
+  width: calc(100% - 20px);
+}
+.app-shell .main-content,
+.library-workspace .main-content {
+  box-shadow:
+    inset 2px 2px #111,
+    inset -2px -2px #4b4b4b;
+  padding-top: 8px;
+}
+.skin-window-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  margin: 0 -12px 10px;
+  user-select: none;
+}
+.skin-window-toolbar > button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 25px;
+  padding: 0;
+  color: #bdbdbd;
+  border: 1px solid transparent;
+}
+.skin-window-toolbar > button:hover {
+  background: #414141;
+  border-color: #656565;
+  color: #fff;
+}
+.skin-window-toolbar .skin-close:hover {
+  background: #782331;
+  border-color: #b15260;
+}
+.skin-window-toolbar .skin-drag-handle {
+  flex: 1;
+  width: auto;
+  justify-content: flex-start;
+  cursor: grab;
+  color: #777;
+}
+.skin-window-toolbar .skin-drag-handle:hover {
+  background: #ffffff05;
+  border-color: transparent;
+  color: #c5c5c5;
+}
+.skin-window-toolbar .skin-drag-handle:active {
+  cursor: grabbing;
+}
+.skin-resize {
+  position: fixed;
+  z-index: 25;
+}
+.skin-resize-North {
+  top: 0;
+  left: 10px;
+  right: 10px;
+  height: 6px;
+  cursor: n-resize;
+}
+.skin-resize-South {
+  bottom: 0;
+  left: 10px;
+  right: 10px;
+  height: 6px;
+  cursor: s-resize;
+}
+.skin-resize-East {
+  right: 0;
+  top: 10px;
+  bottom: 10px;
+  width: 6px;
+  cursor: e-resize;
+}
+.skin-resize-West {
+  left: 0;
+  top: 10px;
+  bottom: 10px;
+  width: 6px;
+  cursor: w-resize;
+}
+.skin-resize-NorthEast {
+  right: 0;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  cursor: ne-resize;
+}
+.skin-resize-NorthWest {
+  left: 0;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  cursor: nw-resize;
+}
+.skin-resize-SouthEast {
+  right: 0;
+  bottom: 0;
+  width: 10px;
+  height: 10px;
+  cursor: se-resize;
+}
+.skin-resize-SouthWest {
+  left: 0;
+  bottom: 0;
+  width: 10px;
+  height: 10px;
+  cursor: sw-resize;
+}
+@media (max-width: 850px) {
+  .skin-window-toolbar {
+    margin-inline: -5px;
+  }
+}

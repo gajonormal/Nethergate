@@ -1,0 +1,111 @@
+.memory-control {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+.memory-control .memory-heading {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+.memory-control .memory-heading > label {
+  margin: 0;
+}
+.memory-control output {
+  color: #fff;
+  white-space: nowrap;
+}
+.memory-control input.memory-slider {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+  cursor: pointer;
+}
+.memory-slider::-webkit-slider-runnable-track {
+  height: 12px;
+  border: 2px solid #1e1e1f;
+  border-radius: 0;
+  background: linear-gradient(
+    to right,
+    #9f2435 0 var(--memory-fill),
+    #8b8c8e var(--memory-fill) 100%
+  );
+  box-shadow:
+    inset 2px 2px #ffffff2b,
+    inset -2px -2px #00000018;
+}
+.memory-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 36px;
+  height: 36px;
+  margin-top: -14px;
+  border: 2px solid #1e1e1f;
+  border-radius: 0;
+  background: #d0d1d4;
+  box-shadow:
+    inset 2px 2px #f4f4f4,
+    inset -2px -6px #58585a;
+}
+.memory-control input.memory-slider:focus-visible {
+  outline: none;
+}
+.memory-slider:focus-visible::-webkit-slider-thumb {
+  box-shadow:
+    inset 2px 2px #f4f4f4,
+    inset -2px -6px #58585a,
+    0 0 0 2px #1e1e1f,
+    0 0 0 4px #fff;
+}
+.memory-slider:hover:not(:disabled)::-webkit-slider-thumb,
+.memory-slider:active:not(:disabled)::-webkit-slider-thumb {
+  background: #f4f6f9;
+}
+.memory-marks {
+  position: relative;
+  height: 18px;
+  margin-inline: 18px;
+  color: #bbb;
+  font-size: 11px;
+}
+.memory-marks > span {
+  position: absolute;
+  transform: translateX(-50%);
+  text-align: center;
+}
+.memory-marks > span::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 2px;
+  height: 5px;
+  background: #777;
+}
+.memory-control label.memory-exact,
+.server-settings-layout .memory-control label.memory-exact {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 120px;
+  gap: 12px;
+  align-items: center;
+  margin: 8px 0 0;
+}
+.memory-control .memory-exact > input {
+  width: 100%;
+}
+.memory-control small {
+  line-height: 1.6;
+  color: #bbb;
+}
+fieldset:disabled .memory-slider::-webkit-slider-thumb {
+  background: #b1b2b5;
+}
+fieldset:disabled .memory-slider {
+  cursor: default;
+}

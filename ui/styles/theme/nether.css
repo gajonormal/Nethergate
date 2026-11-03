@@ -1,0 +1,572 @@
+/* Neutral charcoal surfaces with crimson reserved for interactive accents. */
+.library-brand {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #eee;
+  margin: 0;
+}
+.library-brand .nethergate-lockup {
+  width: 339px;
+  height: 80px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  flex-shrink: 0;
+}
+@media (max-width: 850px) {
+  .library-brand .nethergate-lockup {
+    width: 271.2px;
+    height: 64px;
+  }
+}
+.page-heading .library-brand > span {
+  color: #eee;
+}
+.page-heading .library-brand .brand-dot {
+  color: #e16c7e;
+}
+@media (max-width: 850px) {
+  .app-shell {
+    padding-top: 10px;
+  }
+  .library-brand {
+    font-size: 24px;
+    gap: 9px;
+  }
+}
+html,
+body,
+#root {
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  background:
+    linear-gradient(#101010f2, #101010f2),
+    var(--blackstone) repeat;
+  background-size:
+    auto,
+    144px 144px;
+}
+.app-shell {
+  height: 100dvh;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.app-masthead {
+  border-bottom: 1px solid #79354266;
+}
+.app-masthead .brand {
+  color: #eeeeee;
+}
+.portal.small {
+  background: #81223b;
+  box-shadow:
+    inset 3px 3px #ca5362,
+    inset -3px -3px #380f25;
+}
+.portal.small:before {
+  border-color: #ed8893;
+}
+.app-shell > main,
+.library-workspace > main {
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+}
+.creative-tabs {
+  flex-shrink: 0;
+}
+.creative-tab {
+  min-height: 69px;
+  box-shadow:
+    inset 2px 2px #555555,
+    inset -3px 0 #161616;
+}
+.creative-tab.active {
+  min-height: 80px;
+  background: linear-gradient(#481c28bb, #383838), var(--crimson);
+  background-size:
+    auto,
+    96px 96px;
+}
+.creative-tab.active svg {
+  color: #ffb3a8;
+}
+.app-shell .main-content,
+.library-workspace .main-content {
+  flex: 1;
+  min-height: 0;
+  padding: 20px 24px 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.main-content > .page-heading,
+.main-content > .library-toolbar {
+  flex-shrink: 0;
+}
+.main-content > .energy-status,
+.main-content > .error-banner {
+  flex-shrink: 0;
+  max-height: 22vh;
+  overflow: auto;
+  margin-bottom: 12px;
+}
+.main-content > .detail-heading {
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  gap: 14px;
+  border-bottom: 1px solid #3c3c3c;
+}
+.detail-heading .server-identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.detail-heading h1 {
+  font-size: 19px;
+  line-height: 1.3;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.server-identity .badge {
+  flex-shrink: 0;
+}
+.server-runtime {
+  color: #b8b8b8;
+  font-size: 11px;
+  white-space: nowrap;
+}
+.detail-heading > .button {
+  min-height: 34px;
+  padding: 6px 12px 9px;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+@media (max-width: 850px) {
+  .server-runtime {
+    display: none;
+  }
+  .detail-heading .server-identity {
+    gap: 8px;
+  }
+  .detail-heading h1 {
+    font-size: 16px;
+  }
+}
+.workspace-body,
+.main-content > .library {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  padding: 3px 10px 16px 3px;
+}
+.workspace-body:focus-visible,
+.main-content > .library:focus-visible {
+  outline: 2px solid #b45a68;
+  outline-offset: -2px;
+}
+.console-workspace {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.console-workspace > :not(.console-panel) {
+  flex-shrink: 0;
+  margin-block: 0;
+}
+.console-workspace .console-panel {
+  flex: 1 0 230px;
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+.console-workspace .console-output {
+  flex: 1;
+  min-height: 110px;
+  height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.console-toolbar,
+.console-input,
+.panel-footnote {
+  flex-shrink: 0;
+}
+.console-toolbar {
+  background: #222222;
+  border-bottom: 1px solid #454545;
+}
+.console-output {
+  background: #0b0b0b;
+}
+.workspace-body
+  :is(
+    .world-panel,
+    .settings-panel,
+    .gameplay-panel,
+    .connection-card,
+    .server-metrics,
+    .backup-summary,
+    .recovery-panel,
+    .disclosure
+  ),
+.server-card-body {
+  background-color: var(--surface-background);
+  border-color: var(--surface-border);
+}
+.server-card {
+  border-color: #414141;
+  box-shadow:
+    inset 0 2px #555555,
+    0 4px #0c0c0c;
+}
+.server-card-body {
+  background: linear-gradient(135deg, #202020, #141414);
+}
+.world-art {
+  filter: sepia(0.3) saturate(1.15);
+}
+.world-art .world-label {
+  background: #722738;
+}
+.library-workspace .world-art,
+.library-workspace .world-art.art-1,
+.library-workspace .world-art.art-2 {
+  height: 140px;
+}
+.main-content > footer {
+  flex-shrink: 0;
+  margin: 0;
+  padding: 9px 0;
+  border-color: #3c3c3c;
+  color: #aaaaaa;
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #626262 #141414;
+}
+@media (max-width: 850px), (max-height: 650px) {
+  .app-masthead {
+    height: 64px;
+    flex-basis: 64px;
+  }
+  .app-shell {
+    padding-bottom: 10px;
+  }
+  .app-shell > main,
+  .library-workspace > main {
+    margin-top: 8px;
+  }
+  .creative-tab {
+    min-height: 56px;
+    padding: 7px;
+    gap: 3px;
+  }
+  .creative-tab.active {
+    min-height: 64px;
+  }
+  .creative-tab svg {
+    width: 21px;
+    height: 21px;
+  }
+  .app-shell .main-content,
+  .library-workspace .main-content {
+    padding: 12px 12px 0;
+  }
+  .page-heading {
+    margin-bottom: 12px;
+  }
+  .main-content > footer {
+    font-size: 10px;
+    padding-block: 5px;
+  }
+}
+
+/* Side inventory tabs keep the full height available to each workspace. */
+.app-masthead {
+  display: flex;
+  justify-content: center;
+  flex: 0 0 80px;
+  height: 80px;
+  padding: 10px 20px;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+.app-masthead .brand {
+  font-size: 36px;
+}
+.app-shell > main,
+.library-workspace > main {
+  display: grid;
+  grid-template-columns: 154px minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  margin-top: 0;
+}
+.creative-tabs {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 7px;
+  padding: 12px 0 0 5px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 0;
+}
+.creative-tab,
+.creative-tab.active {
+  flex: 0 0 auto;
+  flex-direction: row;
+  justify-content: flex-start;
+  min-height: 57px;
+  padding: 10px 12px;
+  gap: 10px;
+  text-align: left;
+  border: 3px solid #121212;
+  border-right: 0;
+  font-size: 12px;
+}
+.creative-tab svg {
+  width: 23px;
+  height: 23px;
+}
+.creative-tab.active {
+  box-shadow:
+    inset 3px 3px #90505d,
+    inset 0 -3px #202020;
+}
+.app-shell .main-content,
+.library-workspace .main-content {
+  min-width: 0;
+}
+.side-controls {
+  margin-top: 0;
+  padding: 0 0 8px;
+}
+.side-controls .engine {
+  display: none;
+}
+.side-controls .app-options > summary {
+  padding: 10px 8px;
+  min-height: 46px;
+  font-size: 12px;
+}
+.side-controls .app-options > summary > span {
+  display: inline;
+}
+.side-controls .app-options > summary::after {
+  display: block;
+}
+.side-controls .app-options-content {
+  position: static;
+  inset: auto;
+  width: auto;
+  max-height: none;
+  overflow: visible;
+  display: grid;
+  gap: 6px;
+  padding: 6px 0 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.side-controls .app-options-content .nav-item {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+  font-size: 12px;
+  height: 48px;
+  min-height: 48px;
+  padding: 8px;
+  margin: 0;
+  background:
+    linear-gradient(#090909bd, #090909bd),
+    var(--netherrack) repeat;
+  background-size:
+    auto,
+    96px 96px;
+  border: 3px solid #161616;
+  border-right: 0;
+  box-shadow:
+    inset 3px 3px #79404a,
+    inset 0 -3px #241216;
+  text-shadow: 2px 2px #111;
+  text-align: left;
+  image-rendering: pixelated;
+}
+.side-controls .app-options-content .nav-item > svg {
+  width: 18px;
+  height: 18px;
+  justify-self: center;
+}
+.side-controls .app-options-content .nav-item > span {
+  line-height: 1.25;
+  min-width: 0;
+}
+.side-controls .app-options-content .nav-item:hover {
+  filter: brightness(1.15);
+}
+.side-controls .app-options-content .nav-item:active {
+  box-shadow: inset 2px 3px #111;
+}
+@media (max-width: 850px) {
+  .app-masthead {
+    height: 68px;
+    flex-basis: 68px;
+  }
+  .app-masthead .brand {
+    font-size: 28px;
+  }
+  .app-shell > main,
+  .library-workspace > main {
+    grid-template-columns: 80px minmax(0, 1fr);
+    width: calc(100% - 16px);
+  }
+  .creative-tab,
+  .creative-tab.active {
+    flex-direction: column;
+    justify-content: center;
+    padding: 8px 3px;
+    gap: 5px;
+    min-height: 62px;
+    font-size: 9px;
+  }
+  .side-controls .app-options > summary {
+    flex-direction: column;
+    padding: 8px 2px;
+    gap: 4px;
+    font-size: 9px;
+  }
+  .side-controls .app-options-content .nav-item {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 18px auto;
+    font-size: 9px;
+    gap: 5px;
+    text-align: center;
+    height: 62px;
+    min-height: 62px;
+    padding: 6px 3px;
+  }
+  .side-controls
+    .app-options-content
+    .nav-item
+    > svg:last-child:not(:first-child) {
+    display: none;
+  }
+}
+
+/* Figma 2:176 netherrack joins the frame and side tabs; action buttons use crimson. */
+.app-shell .main-content,
+.library-workspace .main-content {
+  border-color: transparent;
+  background:
+    linear-gradient(135deg, #151515, #0c0c0c 70%) padding-box,
+    linear-gradient(#0007, #0007) border-box,
+    var(--netherrack) border-box;
+  background-size:
+    auto,
+    auto,
+    96px 96px;
+  background-attachment: scroll, fixed, fixed;
+  background-position: 0 0;
+  image-rendering: pixelated;
+  outline: none;
+}
+.creative-tab,
+.app-shell .side-controls .app-options > summary {
+  background:
+    linear-gradient(#090909bd, #090909bd),
+    var(--netherrack) repeat;
+  background-size:
+    auto,
+    96px 96px;
+  border: 3px solid #161616;
+  border-right: 0;
+  box-shadow:
+    inset 3px 3px #79404a,
+    inset 0 -3px #241216;
+  color: #eee;
+  image-rendering: pixelated;
+}
+.app-shell .side-controls .app-options > summary {
+  min-height: 57px;
+  padding: 10px 12px;
+  gap: 10px;
+  font-size: 12px;
+  text-shadow: 2px 2px #111;
+}
+.side-controls .app-options > summary > svg {
+  width: 23px;
+  height: 23px;
+}
+.creative-tab.active,
+.app-shell .side-controls .app-options[open] > summary,
+.app-shell .side-controls .app-options[open] .app-options-content .nav-item {
+  background:
+    linear-gradient(#0007, #0007),
+    var(--netherrack) repeat;
+  background-size:
+    auto,
+    96px 96px;
+  background-attachment: fixed;
+  background-position: 0 0;
+  border-color: #161616;
+  box-shadow:
+    inset 3px 3px #79404a,
+    inset 0 -3px #241216;
+}
+.app-shell .side-controls .app-options > summary:hover {
+  filter: brightness(1.15);
+}
+.creative-tab.active:hover,
+.app-shell .side-controls .app-options[open] > summary:hover,
+.app-shell
+  .side-controls
+  .app-options[open]
+  .app-options-content
+  .nav-item:hover {
+  filter: none;
+}
+@media (max-width: 850px) {
+  .app-shell .side-controls .app-options > summary {
+    min-height: 62px;
+    padding: 8px 3px;
+    font-size: 9px;
+    gap: 5px;
+  }
+}
+@media (max-height: 650px) {
+  .app-shell .side-controls .app-options > summary {
+    min-height: 44px;
+    padding-block: 6px;
+  }
+}
+@media (max-height: 650px) {
+  .app-masthead {
+    height: 60px;
+    flex-basis: 60px;
+  }
+  .creative-tabs {
+    gap: 4px;
+    padding-top: 5px;
+  }
+  .creative-tab,
+  .creative-tab.active {
+    min-height: 44px;
+    padding-block: 6px;
+  }
+}

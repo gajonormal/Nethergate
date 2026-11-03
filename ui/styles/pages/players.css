@@ -1,0 +1,128 @@
+/* One action column for the whole Players page, rather than nested insets. */
+.players-panel {
+  --players-action-width: 240px;
+}
+.players-panel > .settings-panel {
+  padding: 24px;
+}
+.players-panel .players-heading,
+.players-panel .players-access {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--players-action-width);
+  align-items: center;
+  gap: 16px;
+}
+.players-panel .players-heading > div:first-child {
+  min-width: 0;
+}
+.players-panel
+  :is(.players-heading, .players-access, .players-add, .player-row)
+  > .button {
+  width: 100%;
+  height: 44px;
+  min-height: 44px;
+  margin: 0;
+  padding: 8px 12px;
+  justify-content: center;
+  line-height: 1.2;
+}
+.players-panel .players-access {
+  padding: 20px;
+  margin: 18px 0;
+  border: 0;
+  border-top: 1px solid #3c3c3c;
+  border-bottom: 1px solid #3c3c3c;
+  background: transparent;
+  border-radius: 0;
+}
+.players-panel .players-access > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.players-panel .players-access p {
+  margin: 6px 0 0;
+}
+.players-panel .players-add {
+  width: 100%;
+  max-width: none;
+  grid-template-columns: minmax(0, 1fr) var(--players-action-width);
+  margin: 20px 0 24px;
+}
+.players-panel .players-add > label {
+  margin: 0;
+}
+.players-panel .players-add > .button {
+  align-self: end;
+}
+.players-panel .players-add input {
+  height: 44px;
+}
+.players-panel .players-list {
+  margin-top: 10px;
+}
+.players-panel .player-row {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  background: transparent;
+  border-top: 1px solid #3c3c3c;
+}
+.players-panel .player-row:has(> .button) {
+  grid-template-columns: 40px minmax(0, 1fr) var(--players-action-width);
+}
+.players-panel .player-avatar {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  overflow: hidden;
+  background: #262626;
+}
+.players-panel .player-avatar > :is(img, svg) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  object-fit: contain;
+}
+.players-panel .players-heading p {
+  margin: 6px 0 0;
+}
+.players-panel .form-info {
+  margin-block: 14px 0;
+}
+@media (max-width: 850px) {
+  .players-panel {
+    --players-action-width: 220px;
+  }
+  .players-panel > .settings-panel {
+    padding: 16px;
+  }
+}
+@media (max-width: 650px) {
+  .players-panel .players-heading,
+  .players-panel .players-access,
+  .players-panel .players-add {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .players-panel
+    :is(.players-heading, .players-access, .players-add)
+    > .button {
+    width: auto;
+    min-width: 150px;
+    justify-self: start;
+  }
+  .players-panel .player-row:has(> .button) {
+    grid-template-columns: 40px minmax(0, 1fr);
+  }
+  .players-panel .player-row > .button {
+    grid-column: 2;
+    width: auto;
+    justify-self: start;
+  }
+}

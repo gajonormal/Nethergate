@@ -1,0 +1,189 @@
+/* Keep regular pixel lettering, including semantic emphasis and headings. */
+:root {
+  -webkit-user-select: none;
+  user-select: none;
+}
+:root
+  :is(
+    input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not(
+        [type="button"]
+      ):not([type="submit"]):not([type="reset"]),
+    textarea,
+    [contenteditable=""],
+    [contenteditable="true"],
+    [contenteditable="plaintext-only"],
+    .console-output
+  ) {
+  -webkit-user-select: text;
+  user-select: text;
+}
+:root :is(code, pre, kbd, samp) {
+  font-family: var(--font-ui);
+}
+:where(strong, b, h1, h2, h3, h4, h5, h6) {
+  font-weight: 400;
+}
+
+:root .button {
+  min-height: 44px;
+  padding: 8px 14px;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 400;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.button > svg {
+  flex-shrink: 0;
+}
+.connection-panel .sharing-panel .internet-step > .sharing-diagnostic-action {
+  width: 280px;
+  max-width: 100%;
+  justify-self: start;
+}
+/* Keep every labelled switch beside its text, including inside grid forms. */
+:root label:is(.eula-check, .checkbox-row, label):has(> .ore-toggle) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+:root .ore-toggle > input.ore-toggle-input {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+:root label > .ore-toggle {
+  order: 1;
+  flex: 0 0 50px;
+  margin-left: auto;
+  align-self: center;
+}
+:root label > .ore-toggle ~ span {
+  min-width: 0;
+  flex: 1;
+}
+:root .button.button-copy {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  min-width: 44px;
+  max-width: 44px;
+  height: 44px;
+  padding: 10px;
+  flex: 0 0 44px;
+  justify-self: end;
+  margin: 0;
+}
+.connection-panel .connection-address:has(> .button-copy) {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.connection-panel .connection-address:has(> .button-copy) > code {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
+}
+.connection-panel .together-address-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  width: 360px;
+  max-width: 100%;
+}
+.connection-panel
+  .together-address-actions
+  > .connection-address:has(> .button-copy) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 44px;
+  gap: 12px;
+  width: 100%;
+  margin: 0;
+}
+.connection-panel .together-address-actions code {
+  overflow-wrap: anywhere;
+}
+.connection-panel .play-together .together-address-actions > .button {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: 44px;
+  min-height: 44px;
+  margin: 0;
+  justify-self: stretch;
+  display: flex;
+  justify-content: center;
+}
+.world-panel .transfer-card > .button,
+.world-panel .migration-panel > .button {
+  width: 260px;
+  max-width: 100%;
+  min-height: 44px;
+}
+.plugins-panel .plugin-inventory-card > .players-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-content: stretch;
+  gap: 16px;
+}
+.plugins-panel .plugin-inventory-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+.plugins-panel .plugin-inventory-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.plugins-panel .plugin-inventory-actions > .button {
+  width: 100%;
+  min-height: 44px;
+}
+@media (max-width: 650px) {
+  .plugins-panel .plugin-inventory-actions {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+:root .icon-button {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 10px;
+  display: inline-grid;
+  place-items: center;
+}
+
+/* Draw both signs with the same 2px bars rather than different font glyphs. */
+.disclosure > summary::before,
+.app-options > summary::after {
+  content: "";
+  display: block;
+  flex: 0 0 12px;
+  width: 12px;
+  height: 12px;
+  background:
+    linear-gradient(currentColor, currentColor) center / 12px 2px no-repeat,
+    linear-gradient(currentColor, currentColor) center / 2px 12px no-repeat;
+}
+.disclosure[open] > summary::before,
+.app-options[open] > summary::after {
+  content: "";
+  background-size:
+    12px 2px,
+    0 0;
+}
+@media (max-width: 850px) {
+  .side-controls .app-options > summary::after {
+    display: none;
+  }
+}

@@ -1,0 +1,115 @@
+.server-settings-layout {
+  display: grid;
+  gap: 20px;
+  min-width: 0;
+}
+.server-settings-layout > .settings-panel {
+  display: grid;
+  gap: 20px;
+  padding: 24px;
+}
+.server-settings-layout
+  > .settings-panel
+  > :is(h2, p, .disclosure, .form-info) {
+  margin: 0;
+}
+.server-settings-layout form {
+  display: grid;
+  gap: 20px;
+  max-width: none;
+  width: 100%;
+  margin: 0;
+}
+.server-settings-layout fieldset {
+  display: grid;
+  gap: 20px;
+  min-width: 0;
+}
+.server-settings-layout .form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  align-items: start;
+  margin: 0;
+}
+.server-settings-layout label:not(.eula-check) {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  min-width: 0;
+  max-width: none;
+  line-height: 1.5;
+}
+.server-settings-layout label > :is(input:not([type="checkbox"]), select) {
+  width: 100%;
+  min-width: 0;
+}
+.server-settings-layout :is(small, p) {
+  line-height: 1.65;
+}
+.server-settings-layout form > .button,
+.server-settings-layout .java-panel .button {
+  min-height: 44px;
+  margin: 0;
+  justify-self: start;
+}
+.server-settings-layout > .disclosure {
+  margin: 0;
+}
+.server-settings-layout .disclosure > summary {
+  padding: 14px 20px;
+}
+.server-settings-layout .disclosure-content {
+  padding: 20px;
+}
+.server-settings-layout
+  .disclosure-content
+  > :is(.java-panel, .gameplay-panel) {
+  display: grid;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.server-settings-layout :is(.java-panel, .gameplay-panel) > p,
+.server-settings-layout fieldset > :is(p, .eula-check) {
+  margin: 0;
+}
+.server-settings-layout .java-panel .modal-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+}
+.server-settings-layout .java-panel .modal-actions > .button {
+  width: 100%;
+  justify-content: center;
+}
+.server-settings-layout .gameplay-mode-hint {
+  color: #b8b8b8;
+  font-size: 12px;
+}
+.server-settings-layout .gameplay-panel .panel-footnote {
+  max-width: none;
+  padding: 12px 16px;
+}
+.server-settings-layout .eula-check {
+  align-items: center;
+  gap: 12px;
+  line-height: 1.5;
+}
+@media (max-width: 850px) {
+  .server-settings-layout > .settings-panel,
+  .server-settings-layout .disclosure-content {
+    padding: 16px;
+  }
+}
+@media (max-width: 650px) {
+  .server-settings-layout .form-row,
+  .server-settings-layout .java-panel .modal-actions {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
