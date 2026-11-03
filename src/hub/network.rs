@@ -201,6 +201,18 @@ impl Hub {
     }
 
     pub fn set_connection(&self, id: &str, mode: &str, address: &str) -> Result<()> {
+        self.set_connection_checked(id, mode, address, |directory| {
+            crate::public_access::guard_change(&self.root, directory, id)
+        })
+    }
+
+    pub(super) fn set_connection_checked(
+        &self,
+        id: &str,
+        mode: &str,
+        address: &str,
+        check_public_access: impl FnOnce(&Path) -> Result<()>,
+    ) -> Result<()> {
         let entry = self.entry(id)?;
         let runtime = self.runtime(id)?;
         let rt = runtime
@@ -223,7 +235,7 @@ impl Hub {
                 .lock()
                 .map_err(|error| anyhow::anyhow!("Não foi possível obter o lock: {error}"))?
                 .guard_change(id, crate::backup_schedule::now()?)?;
-            crate::public_access::guard_change(&self.root, &entry.directory, id)?;
+            check_public_access(&entry.directory)?;
         }
         let adapters = if mode == "lan" {
             connection::adapters()?

@@ -849,7 +849,22 @@ fn connection_changes_are_explicit_local_reversible_and_blocked_while_busy() {
     let guard = config::lock(&directory).unwrap();
     assert!(hub.set_connection(&id, "local", "").is_err());
     drop(guard);
-    hub.set_connection(&id, "local", "").unwrap();
+    // Exercise the configuration transaction independently of the host's firewall
+    // service. Public-access inspection has its own integration tests.
+    assert!(hub
+        .set_connection_checked(&id, "local", "", |_| {
+            bail!("Public access is still enabled")
+        })
+        .is_err());
+    assert_eq!(fs::read_to_string(&path).unwrap(), edited);
+    let mut checked = false;
+    hub.set_connection_checked(&id, "local", "", |target| {
+        assert_eq!(target, directory);
+        checked = true;
+        Ok(())
+    })
+    .unwrap();
+    assert!(checked);
     assert_eq!(fs::read_to_string(&path).unwrap(), original);
     config::set_property(&path, "online-mode", "false").unwrap();
     assert!(connection::save(&directory, "lan", "192.168.1.50", &adapters).is_err());
